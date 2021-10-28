@@ -1,0 +1,71 @@
+                -- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local input = Instance.new("TextBox")
+local make = Instance.new("TextButton")
+local copy = Instance.new("TextButton")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+
+Frame.Parent = ScreenGui
+Frame.Active = true
+Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Frame.Position = UDim2.new(0.18984127, 0, 0.25429976, 0)
+Frame.Size = UDim2.new(0, 314, 0, 233)
+Frame.Draggable = true
+
+input.Name = "input"
+input.Parent = Frame
+input.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+input.Position = UDim2.new(0.060509555, 0, 0.300429195, 0)
+input.Size = UDim2.new(0, 275, 0, 50)
+input.Font = Enum.Font.SourceSans
+input.PlaceholderText = "raw url here"
+input.Text = ""
+input.TextColor3 = Color3.fromRGB(0, 0, 0)
+input.TextSize = 15.000
+
+make.Name = "make"
+make.Parent = Frame
+make.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+make.Position = UDim2.new(0.178343952, 0, 0.0343347713, 0)
+make.Size = UDim2.new(0, 200, 0, 50)
+make.Font = Enum.Font.SourceSans
+make.Text = "make loadstring"
+make.TextColor3 = Color3.fromRGB(0, 0, 0)
+make.TextSize = 14.000
+
+copy.Name = "copy"
+copy.Parent = Frame
+copy.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+copy.Position = UDim2.new(0.181528658, 0, 0.609442055, 0)
+copy.Size = UDim2.new(0, 200, 0, 50)
+copy.Font = Enum.Font.SourceSans
+copy.Text = "copy loadstring"
+copy.TextColor3 = Color3.fromRGB(0, 0, 0)
+copy.TextSize = 14.000
+
+-- Scripts:
+
+local function AESAA_fake_script() -- make.LocalScript 
+	local script = Instance.new('LocalScript', make)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		input.Text = "loadstring(game:HttpGet('"..input.Text.."'))()"
+	end)
+end
+coroutine.wrap(AESAA_fake_script)()
+local function ZBMDA_fake_script() -- copy.LocalScript 
+	local script = Instance.new('LocalScript', copy)
+
+	script.Parent.MouseButton1Click:Connect(function()
+		setclipboard(input.Text)
+	end)
+end
+coroutine.wrap(ZBMDA_fake_script)()
